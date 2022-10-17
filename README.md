@@ -43,14 +43,14 @@ The Requested end points
 
 ![image](https://user-images.githubusercontent.com/76254252/196300095-28bd269f-d727-4240-b099-a78d9a651a8f.png)
 
-    2. Categories Crud
-    ![image](https://user-images.githubusercontent.com/76254252/196300177-62f57909-0cfe-46e8-a0f4-5c501dcc0b8d.png)
+2. Categories Crud
+![image](https://user-images.githubusercontent.com/76254252/196300177-62f57909-0cfe-46e8-a0f4-5c501dcc0b8d.png)
 
-    3. get ads with query params {tag_name, category_name}
-    ![image](https://user-images.githubusercontent.com/76254252/196300444-e65575b9-1a93-4223-8a9d-5ebeee48ef7b.png)
+3. get ads with query params {tag_name, category_name}
+![image](https://user-images.githubusercontent.com/76254252/196300444-e65575b9-1a93-4223-8a9d-5ebeee48ef7b.png)
         
-    4. get the advertiser with its ads
-    ![image](https://user-images.githubusercontent.com/76254252/196300422-73637615-5341-433f-a5b7-c3b1d3bb6d44.png)
+4. get the advertiser with its ads
+![image](https://user-images.githubusercontent.com/76254252/196300422-73637615-5341-433f-a5b7-c3b1d3bb6d44.png)
     
     
 You will find the PostMan Collection at the project {{host}} => 127.0.0.1:8000/api

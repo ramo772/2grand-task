@@ -39,8 +39,9 @@ Running The Scheduler Locally (the reminder will be sent on 8 pm)
 
 The Requested end points
 
-    1. Tags Crud
-    ![image](https://user-images.githubusercontent.com/76254252/196300095-28bd269f-d727-4240-b099-a78d9a651a8f.png)
+1. Tags Crud
+
+![image](https://user-images.githubusercontent.com/76254252/196300095-28bd269f-d727-4240-b099-a78d9a651a8f.png)
 
     2. Categories Crud
     ![image](https://user-images.githubusercontent.com/76254252/196300177-62f57909-0cfe-46e8-a0f4-5c501dcc0b8d.png)

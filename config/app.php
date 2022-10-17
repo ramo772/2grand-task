@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -69,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => Carbon::now('Africa/Cairo'),
 
     /*
     |--------------------------------------------------------------------------

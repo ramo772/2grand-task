@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('advertisers', function (Blueprint $table) {
+        Schema::create('ad_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->foreignId('ad_id')->nullable()->constrained('ads')->onDelete('cascade');
+            $table->foreignId('tag_id')->nullable()->constrained('tags')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisers');
+        Schema::dropIfExists('ad_tags');
     }
 };

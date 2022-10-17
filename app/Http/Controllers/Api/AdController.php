@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\WebService\Category\StoreCategoryRequest;
-use App\Http\Requests\WebService\Category\UpdateCategoryRequest;
-use App\Http\Resources\WebService\CategoryResource;
+use App\Http\Resources\WebService\AdResource;
+use App\Models\Ad;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class AdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +18,24 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        // get all categories
-        $categories =     DB::select('select * from categories ');
-        // pagination
-        $categories = $this->arrayPaginator($categories, $request);
+        $ads = Ad::get();
+        //tag filter
+        if ($request->query('tag_name') && $request->query('tag_name') != 'none') {
+            $tagName = $request->query('tag_name');
+            $ads = Ad::whereHas('tags', function ($query) use ($tagName) {
+                $query->whereTitle($tagName);
+            })->get();
+        }
+        //category filter
+        if ($request->query('category_name') && $request->query('category_name') != 'none') {
+            $categoryName = $request->query('category_name');
+            $category_id = Category::where('title', $categoryName)->get()->implode('id');
+            $ads = Ad::where('category_id', $category_id)->get();
+        }
+        //paginate
+        $ads = $this->arrayPaginator($ads, $request);
 
-        return  $this->success_response(CategoryResource::collection($categories), "");
+        return  $this->success_response(AdResource::collection($ads), "");
     }
 
     /**
@@ -43,10 +54,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        $category = Category::create($request->validated());
-        return  $this->success_response(new CategoryResource($category), "Category Added Successfully");
+        //
     }
 
     /**
@@ -78,10 +88,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, $id)
     {
-        $category->update($request->validated());
-        return  $this->success_response(new CategoryResource($category), "Category Updated Successfully");
+        //
     }
 
     /**
@@ -90,9 +99,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-        return  $this->success_response( "", "Category Deleted Successfully");
+        //
     }
 }

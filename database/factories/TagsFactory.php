@@ -17,10 +17,9 @@ class TagsFactory extends Factory
      */
     public function definition()
     {
-        $ad_id = Ad::inRandomOrder()->implode('id');
+
         return [
             'title' => fake()->word(),
-            'ad_id' => $ad_id[0]
         ];
     }
 }

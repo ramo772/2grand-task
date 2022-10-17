@@ -17,7 +17,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //Scadule for SendEmailCommand
-        $schedule->command(SendAdsEmails::class)->dailyAt('00:55');
+        $schedule->command(SendAdsEmails::class)->timezone('Africa/Cairo')
+        ->dailyAt('20:00');
     }
 
     /**

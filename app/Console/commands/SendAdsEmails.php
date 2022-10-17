@@ -24,7 +24,7 @@ class SendAdsEmails extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Sending Reminder Email';
 
     /**
      * Execute the console command.
